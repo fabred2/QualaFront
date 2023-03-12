@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <form [formGroup]="form" class="col-sm-6" id="formSucursal" class="form-group posicion">
+           <div class="form-group">
+             <label for="name">Código:</label>
+             <input type="number" id="codigo" formControlName="codigo" class="form-control">
+             <div *ngIf="form.get('codigo')?.invalid && form.get('codigo')?.touched" class="value-feedback invalid">
+                código es requerido.
+             </div>
+            </div>
+            <div class="form-group">
+              <label for="name">Descripción:</label>
+              <input type="text" maxlength="250" id="descripcion" formControlName="descripcion" class="form-control">
+              <div *ngIf="form.get('descripcion')?.invalid && form.get('descripcion')?.touched" class="value-feedback invalid">
+                descripcion es requerido.
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="IdMoneda">SubCategoría:</label>
+              <select formControlName="idMoneda" id="idMoneda" class="form-control">
+                <option value="">seleccione...</option>  
+                <option *ngFor="let monedas of listMonedas" [value]="monedas.id">{{ monedas.codigo }}</option>
+              </select>
+              <div *ngIf="form.get('idMoneda')?.invalid && form.get('idMoneda')?.touched" class="value-feedback invalid">
+                moneda es requerida.
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="name">Dirección:</label>
+              <input type="text" maxlength="250" id="direccion" formControlName="direccion" class="form-control">
+              <div *ngIf="form.get('direccion')?.invalid && form.get('direccion')?.touched" class="value-feedback invalid">
+                Moneda es requerida.
+              </div> 
+            </div> 
+             <div class="form-group">
+               <label for="name">Identificación:</label>
+                <input type="text" maxlength="50" id="identificacion" formControlName="identificacion" class="form-control">
+                <div *ngIf="form.get('identificacion')?.invalid && form.get('identificacion')?.touched" class="value-feedback invalid">
+                  identificación es requerida.
+                </div> 
+              </div>
+             <div class="form-group">
+                <button [disabled]="form.invalid" id="btnSubmit" (click)="setSucursal()" class="btn btn-primary">Submit</button>
+           </div>
+       </form>
+      </div>
+</div>
+
